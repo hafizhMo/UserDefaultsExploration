@@ -14,10 +14,10 @@ extension UserDefaults {
     
     var switchIsOn: Bool{
         get{
-            UserDefaults.standard.bool(forKey: UserDefaultsKeys.switchIsOn.rawValue)
+            bool(forKey: UserDefaultsKeys.switchIsOn.rawValue)
         }
         set{
-            UserDefaults.standard.setValue(newValue, forKey: UserDefaultsKeys.switchIsOn.rawValue)
+            setValue(newValue, forKey: UserDefaultsKeys.switchIsOn.rawValue)
         }
     }
 }
