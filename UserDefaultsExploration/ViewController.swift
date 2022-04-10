@@ -15,13 +15,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let isOn = UserDefaults.standard.bool(forKey: switchKey)
+        let isOn = UserDefaults.standard.switchIsOn
         updateBackground(isOn: isOn)
     }
 
 
     @IBAction func switchToggled(_ sender: UISwitch) {
-        UserDefaults.standard.setValue(sender.isOn, forKey: switchKey)
+        UserDefaults.standard.switchIsOn = sender.isOn
         updateBackground(isOn: sender.isOn)
     }
     
