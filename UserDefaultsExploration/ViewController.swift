@@ -8,26 +8,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var switchView: UISwitch!
-    let switchKey = "switchIsOn"
+    
+    @IBOutlet weak var stageField: UITextField!
+    @IBOutlet weak var roleField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let isOn = UserDefaults.standard.switchIsOn
-        updateBackground(isOn: isOn)
+        stageField.text = UserDefaults.standard.signInMember?.stageName
+        roleField.text = UserDefaults.standard.signInMember?.role
     }
 
-
-    @IBAction func switchToggled(_ sender: UISwitch) {
-        UserDefaults.standard.switchIsOn = sender.isOn
-        updateBackground(isOn: sender.isOn)
-    }
-    
-    private func updateBackground(isOn: Bool){
-        view.backgroundColor = isOn ? .orange : .darkGray
-        switchView.isOn = isOn
+    @IBAction func submitBtn(_ sender: UIButton) {
+        let stageName = stageField.text ?? ""
+        let role = roleField.text ?? ""
+        
+        let member = Member(stageName: stageName, role: role)
+        UserDefaults.standard.signInMember = member
     }
 }
 
